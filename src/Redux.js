@@ -1,15 +1,21 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-
+import { getStorage } from "./util";
+let user = null;
+let loggedin = false;
+if (localStorage.getItem("user")) {
+  user = getStorage("user", true);
+  loggedin = true;
+}
 const intialState = {
   products: [],
   tags: [],
   cart: [],
   orders: [],
   users: [],
-  user: null,
-  loggedin: null,
+  user,
+  loggedin,
 };
 function reducer(state = intialState, action) {
   switch (action.type) {
