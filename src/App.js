@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./style.css";
 import Header from "./components/Header";
@@ -11,7 +11,24 @@ import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
 import Checkout from "./pages/Checkout";
 import Errorpage from "./pages/Errorpage";
+import { useDispatch, useSelector } from "react-redux";
+import * as services from "./util";
 export default function App() {
+  const state = useSelector((s) => s);
+  const dispatch = useDispatch();
+  const { user } = state;
+  const boot = () => {
+    services
+      ._products()
+      .then((d) => dispatch({ type: "products", payload: d }));
+
+    services._tags().then((d) => dispatch({ type: "tags", payload: d }));
+    if (state.loggedin) {
+      services._cart().then((d) => dispatch({ type: "cart", payload: d }));
+      services._orders().then((d) => dispatch({ type: "orders", payload: d }));
+    }
+  };
+  useEffect(boot, [user]);
   return (
     <BrowserRouter>
       <Header />

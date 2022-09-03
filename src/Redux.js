@@ -18,10 +18,9 @@ const intialState = {
   loggedin,
 };
 function reducer(state = intialState, action) {
-  switch (action.type) {
+  switch (action?.type) {
     case "products":
       return { ...state, products: action.payload };
-
     case "tags":
       return { ...state, tags: action.payload };
     case "cart":
