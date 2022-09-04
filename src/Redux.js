@@ -40,6 +40,8 @@ function reducer(state = intialState, action) {
       return { ...state, ...action.payload };
     case "menu":
       return { ...state, menu: !state.menu };
+    case "login":
+      return { ...state, loggedin: true, user: action.payload };
     default:
       return state;
   }

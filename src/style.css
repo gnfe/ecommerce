@@ -136,3 +136,10 @@ button.active {
   margin-top: 30px;
   width: 100%;
 }
+
+p.error
+{
+  color:red;
+  margin:0;
+  font-size: 12px;
+}
