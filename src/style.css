@@ -137,9 +137,22 @@ button.active {
   width: 100%;
 }
 
-p.error
-{
-  color:red;
-  margin:0;
+p.error {
+  color: red;
+  margin: 0;
   font-size: 12px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile>div
+{
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 10px 10px black;
+  border-top: 20px solid #000;
+  margin:20px auto;
 }
