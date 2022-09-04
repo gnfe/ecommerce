@@ -20,6 +20,7 @@ const intialState = {
   search: "",
   user,
   loggedin,
+  menu: false,
 };
 function reducer(state = intialState, action) {
   switch (action?.type) {
@@ -37,6 +38,8 @@ function reducer(state = intialState, action) {
       return { ...state, search: action.payload };
     case "sort":
       return { ...state, ...action.payload };
+    case "menu":
+      return { ...state, menu: !state.menu };
     default:
       return state;
   }

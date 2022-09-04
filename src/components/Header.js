@@ -1,17 +1,22 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const state = useSelector((s) => s);
+  const dispatch = useDispatch();
   const { cart, orders, user, loggedin } = state;
+  const hc = () => dispatch({ type: "menu" });
   return (
     <>
       <header>
+        <div onClick={hc}>
+          <i className="fa fa-bars"></i>
+        </div>
         <h1>Ecommerce-Gaurav Nasa</h1>
         <div>build.1.0.1</div>
       </header>
-      <aside>
+      <aside className={state.menu ? "active" : ""}>
         <Link to="/">Home</Link>
         {!state.loggedin ? (
           <>
