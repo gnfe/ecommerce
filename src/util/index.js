@@ -1,7 +1,8 @@
 import { toast } from "react-toastify";
 import instance from "axios";
+export const base = `https://endothermic-fetches.000webhostapp.com/`;
 const axios = instance.create({
-  baseURL: "https://endothermic-fetches.000webhostapp.com/index.php",
+  baseURL: base + "index.php",
 });
 
 export const t = (m = "", status = true) => {
@@ -61,13 +62,21 @@ export const _removeFromCart = async (cid = 0) => {
   const url = `?q=removeFromCart&uid=${uid}&cid=${cid}`;
   return await axios.get(url).then((res) => res.data);
 };
-export const _updateCart = async (pid = 0, qty = 0) => {
+export const _updateCart = async (cid = 0, qty = 0) => {
   const uid = getUser("uid");
-  const url = `?q=updateCart&uid=${uid}&pid=${pid}&qty=${qty}`;
+  const url = `?q=updateCart&uid=${uid}&cid=${cid}&qty=${qty}`;
   return await axios.get(url).then((res) => res.data);
 };
 export const _checkout = async () => {
   const uid = getUser("uid");
   const url = `?q=checkout&uid=${uid}`;
   return await axios.get(url).then((res) => res.data);
+};
+
+export const subtotal = (a) => {
+  if (a.length > 0) {
+    return a.map((x) => +x.price).reduce((s, n) => s + n);
+  } else {
+    return 0;
+  }
 };

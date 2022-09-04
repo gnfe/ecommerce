@@ -21,6 +21,7 @@ const intialState = {
   user,
   loggedin,
   menu: false,
+  tc: false,
 };
 function reducer(state = intialState, action) {
   switch (action?.type) {
@@ -40,6 +41,9 @@ function reducer(state = intialState, action) {
       return { ...state, ...action.payload };
     case "menu":
       return { ...state, menu: !state.menu };
+    case "tc":
+      return { ...state, tc: !state.tc };
+
     case "login":
       return { ...state, loggedin: true, user: action.payload };
     default:

@@ -42,7 +42,7 @@ export function AllProducts() {
 
 export const Product = (props) => {
   const state = useSelector((s) => s);
-  const base = `https://endothermic-fetches.000webhostapp.com/`;
+  const base = services.base;
   const dispatch = useDispatch();
   const hc = () => {
     services
@@ -86,7 +86,9 @@ export const Product = (props) => {
           className="fa fa-star"
         ></i>
       </div>
-      {+props.discount && <div className="discount">{props.discount} % off</div>}
+      {+props.discount && (
+        <div className="discount">{props.discount} % off</div>
+      )}
       <div className="tags">{props.tags}</div>
       {state.user && (
         <button className="cart-btn" onClick={hc}>

@@ -148,30 +148,64 @@ p.error {
   align-items: center;
   justify-content: center;
 }
-.profile>div
-{
+.profile > div {
   background-color: white;
   padding: 20px;
   box-shadow: 0 10px 10px black;
   border-top: 20px solid #000;
-  margin:20px auto;
+  margin: 20px auto;
 }
-@media (max-width:1100px) {
-    .products .item
-    {
-      width: 16%;
-    }
+.sticky-cart {
+  text-align: center;
+  z-index: 100000000;
+  position: fixed;
+  top: 100px;
+  right: 0;
+  width: 300px;
+  background-color: black;
+  color: white;
+  padding: 10px;
 }
-@media (max-width:900px) {
-    .products .item
-    {
-      width: 20%;
-    }
+.sticky-cart .overflow {
+  max-height: calc(100vh - 300px);
+  overflow: auto;
+}
+.sticky-cart .overflow .cart-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+.sticky-cart .overflow .cart-line button {
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sticky-cart .overflow .cart-line .plus,
+.sticky-cart .overflow .cart-line .min {
+  background-color: grey;
+  color: white;
+}
+.sticky-cart .overflow .cart-line .rem {
+  background-color: red;
+  color: white;
+}
+@media (max-width: 1100px) {
+  .products .item {
+    width: 16%;
+  }
+}
+@media (max-width: 900px) {
+  .products .item {
+    width: 20%;
+  }
 }
 
-@media (max-width:600px) {
-    .products .item
-    {
-      width: 40%;
-    }
+@media (max-width: 600px) {
+  .products .item {
+    width: 40%;
+  }
 }
