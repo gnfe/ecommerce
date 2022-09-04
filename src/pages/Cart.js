@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as services from "../util";
+import { CheckoutBtn } from "../components/home.module";
 export default function Cart() {
   const state = useSelector((s) => s);
   const { cart } = state;
@@ -36,7 +37,7 @@ export default function Cart() {
         </thead>
         <tbody>
           {cart.map((x, i) => (
-            <tr>
+            <tr key={i}>
               <td>{i + 1}</td>
               <td>
                 {x.title}
@@ -63,7 +64,7 @@ export default function Cart() {
           ))}
         </tbody>
       </table>
-
+      <CheckoutBtn />
       <h4>Subtotal: {services.subtotal(cart)}</h4>
     </div>
   );

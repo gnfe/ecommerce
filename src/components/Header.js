@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import * as services from "../util";
+import { CheckoutBtn } from "../components/home.module";
 export default function Header() {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
@@ -86,6 +87,7 @@ export const StickyCart = (props) => {
         ))}
       </div>
       <h4>Subtotal: {services.subtotal(cart)}</h4>
+      <CheckoutBtn />
     </summary>
   );
 };

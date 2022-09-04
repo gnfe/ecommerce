@@ -139,3 +139,21 @@ export const AllFilters = (props) => {
     </div>
   );
 };
+
+export const CheckoutBtn = (props) => {
+  const hc = () => {
+    services
+      ._checkout()
+      .then((d) => {
+        services.t(d.data, 1);
+      })
+      .catch((d) => {
+        services.t(d.message, 0);
+      });
+  };
+  return (
+    <button onClick={hc} className="checkout-btn">
+      Checkout
+    </button>
+  );
+};

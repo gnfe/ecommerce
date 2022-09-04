@@ -227,3 +227,10 @@ p.error {
     width: 40%;
   }
 }
+
+.checkout-btn
+{
+  background-color: slateblue;
+  color:white;
+  margin-top: 10px;
+}
