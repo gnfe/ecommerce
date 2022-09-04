@@ -14,6 +14,10 @@ const intialState = {
   cart: [],
   orders: [],
   users: [],
+  tagname: "",
+  order: true,
+  col: "id",
+  search: "",
   user,
   loggedin,
 };
@@ -27,6 +31,12 @@ function reducer(state = intialState, action) {
       return { ...state, cart: action.payload };
     case "orders":
       return { ...state, orders: action.payload };
+    case "tagname":
+      return { ...state, tagname: action.payload };
+    case "search":
+      return { ...state, search: action.payload };
+    case "sort":
+      return { ...state, ...action.payload };
     default:
       return state;
   }

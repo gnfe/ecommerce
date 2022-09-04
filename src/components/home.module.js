@@ -4,8 +4,10 @@ export function AllTags() {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
   const hc = (e) => dispatch({ type: "tagname", payload: e.t });
+  const hs = (e) => dispatch({ type: "search", payload: e.target.value });
   return (
     <div className="tags">
+      <input placeholder="search" onChange={hs} value={state.search} />
       {state?.tags?.map((x, i) => (
         <button
           onClick={(e) => hc(x.t)}
@@ -22,7 +24,12 @@ export function AllProducts() {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
 
-  const products = state.products;
+  const products = state.products
+    .filter((x) => Object.values(x).join("").includes(state.search))
+    .filter((x) => x.tags.startsWith(state.tagname))
+    .sort((x, y) =>
+      state.order ? x[state.col] - y[state.col] : y[state.col] - x[state.col]
+    );
   return (
     <div className="products">
       {products?.map((x, i) => (
@@ -70,6 +77,45 @@ export const Product = (props) => {
         <button onClick={hc}>
           <i className="fa fa-shopping-cart"></i>
         </button>
+      </div>
+    </div>
+  );
+};
+
+export const AllFilters = (props) => {
+  const dispatch = useDispatch();
+
+  const hs = (e) => {
+    if (e.target.className === "asc") {
+      dispatch({ type: "sort", payload: { col: e.target.value, order: true } });
+    } else {
+      dispatch({
+        type: "sort",
+        payload: { col: e.target.value, order: false },
+      });
+    }
+  };
+  return (
+    <div className="filters">
+      <div>
+        <p>Low To High</p>
+        <select className="asc" onChange={hs}>
+          <option value="id">relevance</option>
+          <option value="price">price</option>
+          <option value="rating">rating</option>
+          <option value="discount">discount</option>
+          <option value="tags">tags</option>
+        </select>
+      </div>
+      <div>
+        <p>High To Low</p>
+        <select className="desc" onChange={hs}>
+          <option value="id">relevance</option>
+          <option value="price">price</option>
+          <option value="rating">rating</option>
+          <option value="discount">discount</option>
+          <option value="tags">tags</option>
+        </select>
       </div>
     </div>
   );
