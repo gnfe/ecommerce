@@ -17,12 +17,8 @@ export const setStorage = (k, v, p = false) => {
   return true;
 };
 export const getUser = (k) => {
-  if (getStorage("user", true) !== null) {
-    let user = getStorage("user", true);
-    return user[k] || "";
-  } else {
-    return null;
-  }
+  let user = getStorage("user", true);
+  return user["id"] || "";
 };
 
 export const _products = async () => {

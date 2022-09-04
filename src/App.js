@@ -24,8 +24,8 @@ export default function App() {
 
     services._tags().then((d) => dispatch({ type: "tags", payload: d }));
     if (state.loggedin) {
-      services._cart().then((d) => dispatch({ type: "cart", payload: d }));
-      services._orders().then((d) => dispatch({ type: "orders", payload: d }));
+      services._cart().then((d) => dispatch({ type: "cart", payload: d.data }));
+      services._orders().then((d) => dispatch({ type: "orders", payload: d.data }));
     }
   };
   useEffect(boot, [user]);
