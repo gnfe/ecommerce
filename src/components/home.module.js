@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import * as services from "../util";
 export function AllTags() {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
@@ -40,9 +41,23 @@ export function AllProducts() {
 }
 
 export const Product = (props) => {
+  const state = useSelector((s) => s);
   const base = `https://endothermic-fetches.000webhostapp.com/`;
+  const dispatch = useDispatch();
   const hc = () => {
-    // addToCart here
+    services
+      ._addToCart(props.id)
+      .then((d) => {
+        if (d.status === "good") {
+          services.t("added to cart", 1);
+          dispatch({ type: "cart", payload: d.data });
+        } else {
+          services.t("server timeout", 0);
+        }
+      })
+      .catch((e) => {
+        services.t(e.message, 0);
+      });
   };
   return (
     <div className="item">
@@ -73,9 +88,11 @@ export const Product = (props) => {
       </div>
       <div className="discount">{props.discount} % off</div>
       <div className="tags">{props.tags}</div>
-      <button className="cart-btn" onClick={hc}>
-        <i className="fa fa-shopping-cart"></i>
-      </button>
+      {state.user && (
+        <button className="cart-btn" onClick={hc}>
+          <i className="fa fa-shopping-cart"></i>
+        </button>
+      )}
     </div>
   );
 };

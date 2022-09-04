@@ -5,7 +5,7 @@ import { getStorage } from "./util";
 let user = null;
 let loggedin = false;
 if (localStorage.getItem("user")) {
-  user = getStorage("user", true);
+  user = JSON.parse(localStorage.getItem("user"));
   loggedin = true;
 }
 const intialState = {
