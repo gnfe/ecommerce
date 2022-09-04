@@ -37,7 +37,6 @@ export default function Header() {
             <Link to="/Cart">Cart ({cart.length})</Link>
             <Link to="/Orders">Orders ({orders.length})</Link>
             <Link to="/Profile">Profile</Link>
-            <Link to="/Checkout">Checkout</Link>
             <Link to="/Logout">Logout {user?.name || "Guest"}</Link>
           </>
         )}

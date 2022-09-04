@@ -9,7 +9,6 @@ import Signup from "./pages/Signup";
 import Cart from "./pages/Cart";
 import Orders from "./pages/Orders";
 import Profile from "./pages/Profile";
-import Checkout from "./pages/Checkout";
 import Errorpage from "./pages/Errorpage";
 import { useDispatch, useSelector } from "react-redux";
 import * as services from "./util";
@@ -25,7 +24,9 @@ export default function App() {
     services._tags().then((d) => dispatch({ type: "tags", payload: d }));
     if (state.loggedin) {
       services._cart().then((d) => dispatch({ type: "cart", payload: d.data }));
-      services._orders().then((d) => dispatch({ type: "orders", payload: d.data }));
+      services
+        ._orders()
+        .then((d) => dispatch({ type: "orders", payload: d.data }));
     }
   };
   useEffect(boot, [user]);
@@ -40,7 +41,6 @@ export default function App() {
           <Route path="Cart" element={<Cart />} />
           <Route path="Orders" element={<Orders />} />
           <Route path="Profile" element={<Profile />} />
-          <Route path="Checkout" element={<Checkout />} />
           <Route path="*" element={<Errorpage />} />
         </Routes>
       </div>

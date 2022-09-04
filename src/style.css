@@ -234,3 +234,12 @@ p.error {
   color:white;
   margin-top: 10px;
 }
+.err 
+{
+  background-color: white;
+  padding: 20px;
+}
+.err  img
+{
+  width: 100%;
+}
