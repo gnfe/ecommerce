@@ -15,12 +15,11 @@ export default function Login() {
     services
       ._login(data)
       .then((d) => {
-        // console.log(d);
         if (d.data) {
           services.t("login succes " + d.data.name, true);
-          services.setStorage("user", d.data, true);
+          services.setStorage("user", JSON.stringify(d.data));
           dispatch({ type: "login", payload: d.data });
-          nav("/Profile");
+          // nav("/Profile");
         } else {
           return Promise.reject({ message: "failed to login" });
         }

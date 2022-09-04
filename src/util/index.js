@@ -21,7 +21,7 @@ export const getUser = (k) => {
     let user = getStorage("user", true);
     return user[k] || "";
   } else {
-    return "";
+    return null;
   }
 };
 
