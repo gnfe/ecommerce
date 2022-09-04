@@ -10,6 +10,7 @@ export default function Header() {
   const hc = () => dispatch({ type: "menu" });
   const hc2 = () => dispatch({ type: "tc" });
   const hl = () => {
+    services.t("logout sucess",1)
     localStorage.clear();
     dispatch({ type: "logout" });
   };
