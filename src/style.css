@@ -193,6 +193,24 @@ p.error {
   background-color: red;
   color: white;
 }
+.my-cart {
+  height: 80vh;
+  overflow: auto;
+}
+.my-cart table {
+  background-color: white;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 10px black;
+  height: 400px;
+  overflow: auto;
+}
+.my-cart table thead {
+  position: sticky;
+  top: 0px;
+  background-color: black;
+  color: white;
+}
 @media (max-width: 1100px) {
   .products .item {
     width: 16%;
