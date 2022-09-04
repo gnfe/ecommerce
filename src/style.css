@@ -156,3 +156,22 @@ p.error {
   border-top: 20px solid #000;
   margin:20px auto;
 }
+@media (max-width:1100px) {
+    .products .item
+    {
+      width: 16%;
+    }
+}
+@media (max-width:900px) {
+    .products .item
+    {
+      width: 20%;
+    }
+}
+
+@media (max-width:600px) {
+    .products .item
+    {
+      width: 40%;
+    }
+}
