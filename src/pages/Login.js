@@ -1,9 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import * as services from "../util";
 export default function Login() {
   const dispatch = useDispatch();
+  const nav = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,6 +20,7 @@ export default function Login() {
           services.t("login succes " + d.data.name, true);
           services.setStorage("user", d.data, true);
           dispatch({ type: "login", payload: d.data });
+          nav("/Profile");
         } else {
           return Promise.reject({ message: "failed to login" });
         }
