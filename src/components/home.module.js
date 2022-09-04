@@ -34,22 +34,40 @@ export function AllProducts() {
 
 export const Product = (props) => {
   const base = `https://endothermic-fetches.000webhostapp.com/`;
+  const hc = () => {
+    // addToCart here
+  };
   return (
     <div className="item">
       <img src={base + props.image} alt="" />
       <div>{props.title}</div>
       <div>{props.price}</div>
       <div>
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star"></i>
-        <i className="fa fa-star"></i>
+        <i
+          style={{ color: 1 <= props.rating ? "orange" : "silver" }}
+          className="fa fa-star"
+        ></i>
+        <i
+          style={{ color: 2 <= props.rating ? "orange" : "silver" }}
+          className="fa fa-star"
+        ></i>
+        <i
+          style={{ color: 3 <= props.rating ? "orange" : "silver" }}
+          className="fa fa-star"
+        ></i>
+        <i
+          style={{ color: 4 <= props.rating ? "orange" : "silver" }}
+          className="fa fa-star"
+        ></i>
+        <i
+          style={{ color: 5 <= props.rating ? "orange" : "silver" }}
+          className="fa fa-star"
+        ></i>
       </div>
       <div className="discount">{props.discount} % off</div>
       <div className="tags">{props.tags}</div>
       <div>
-        <button>
+        <button onClick={hc}>
           <i className="fa fa-shopping-cart"></i>
         </button>
       </div>
