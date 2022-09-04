@@ -53,15 +53,67 @@ aside.active {
   transform: translateX(0%);
 }
 
-.container
-{
+.container {
   padding: 10px;
 }
 
-footer
-{
+footer {
   padding: 10px;
   background-color: black;
-  color:white;
+  color: white;
   text-align: center;
+}
+
+.filters,
+.tags {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button.active {
+  background-color: black;
+  color: white;
+}
+.products {
+  text-align: center;
+  margin-top: 20px;
+  max-height: 100vh;
+  overflow: auto;
+}
+.products .item {
+  display: inline-table;
+  width: 12%;
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 0 10px 10px black;
+  position: relative;
+}
+.products .item img {
+  width: 100%;
+}
+.products .item .tags {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+.products .item .cart-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+
+
+.products .item .discount {
+  background-color: yellow;
+  padding: 10px;
+  position: absolute;
+  top:50%;
+  right:0;
 }

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 export function AllTags() {
   const state = useSelector((s) => s);
   const dispatch = useDispatch();
-  const hc = (e) => dispatch({ type: "tagname", payload: e.t });
+  const hc = (payload) => dispatch({ type: "tagname", payload });
   const hs = (e) => dispatch({ type: "search", payload: e.target.value });
   return (
     <div className="tags">
@@ -73,11 +73,9 @@ export const Product = (props) => {
       </div>
       <div className="discount">{props.discount} % off</div>
       <div className="tags">{props.tags}</div>
-      <div>
-        <button onClick={hc}>
-          <i className="fa fa-shopping-cart"></i>
-        </button>
-      </div>
+      <button className="cart-btn" onClick={hc}>
+        <i className="fa fa-shopping-cart"></i>
+      </button>
     </div>
   );
 };
@@ -100,6 +98,7 @@ export const AllFilters = (props) => {
       <div>
         <p>Low To High</p>
         <select className="asc" onChange={hs}>
+          <option value="other">Select</option>
           <option value="id">relevance</option>
           <option value="price">price</option>
           <option value="rating">rating</option>
@@ -110,6 +109,7 @@ export const AllFilters = (props) => {
       <div>
         <p>High To Low</p>
         <select className="desc" onChange={hs}>
+          <option value="other">Select</option>
           <option value="id">relevance</option>
           <option value="price">price</option>
           <option value="rating">rating</option>
