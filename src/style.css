@@ -110,11 +110,29 @@ button.active {
   color: white;
 }
 
-
 .products .item .discount {
   background-color: yellow;
   padding: 10px;
   position: absolute;
-  top:50%;
-  right:0;
+  top: 50%;
+  right: 0;
+}
+
+.auth {
+  padding: 10px;
+  margin: 10px;
+  background-color: white;
+  display: inline-table;
+  border-top: 20px solid #000;
+  box-shadow: 0 10px 10px black;
+}
+
+.auth input {
+  background-color: #f1f1f1;
+}
+.auth button {
+  background-color: black;
+  color: white;
+  margin-top: 30px;
+  width: 100%;
 }
