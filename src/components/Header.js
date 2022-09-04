@@ -11,7 +11,11 @@ export default function Header() {
     <>
       <header>
         <div onClick={hc}>
-          <i className="fa fa-bars"></i>
+          {!state.menu ? (
+            <i className="fa fa-bars"></i>
+          ) : (
+            <i className="fa fa-remove fa-spin"></i>
+          )}
         </div>
         <h1>Ecommerce-Gaurav Nasa</h1>
         <div>build.1.0.1</div>
