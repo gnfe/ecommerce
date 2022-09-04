@@ -86,7 +86,7 @@ export const Product = (props) => {
           className="fa fa-star"
         ></i>
       </div>
-      <div className="discount">{props.discount} % off</div>
+      {+props.discount && <div className="discount">{props.discount} % off</div>}
       <div className="tags">{props.tags}</div>
       {state.user && (
         <button className="cart-btn" onClick={hc}>
