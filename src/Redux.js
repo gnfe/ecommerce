@@ -43,7 +43,8 @@ function reducer(state = intialState, action) {
       return { ...state, menu: !state.menu };
     case "tc":
       return { ...state, tc: !state.tc };
-
+    case "logout":
+      return { ...state, loggedin: false, user: null, cart: [], orders: [] };
     case "login":
       return { ...state, loggedin: true, user: action.payload };
     default:

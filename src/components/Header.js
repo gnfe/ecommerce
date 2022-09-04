@@ -9,6 +9,10 @@ export default function Header() {
   const { cart, orders, user, loggedin } = state;
   const hc = () => dispatch({ type: "menu" });
   const hc2 = () => dispatch({ type: "tc" });
+  const hl = () => {
+    localStorage.clear();
+    dispatch({ type: "logout" });
+  };
   return (
     <>
       <header>
@@ -37,7 +41,9 @@ export default function Header() {
             <Link to="/Cart">Cart ({cart.length})</Link>
             <Link to="/Orders">Orders ({orders.length})</Link>
             <Link to="/Profile">Profile</Link>
-            <Link to="/Logout">Logout {user?.name || "Guest"}</Link>
+            <Link onClick={hl} to="/Login">
+              Logout {user?.name || "Guest"}
+            </Link>
           </>
         )}
       </aside>
